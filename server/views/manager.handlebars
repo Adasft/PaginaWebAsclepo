@@ -1,0 +1,85 @@
+<main class="pg-main">
+  <div class="pg-main-content">
+
+    <div class="pg-main-wrapper">
+      
+      <div class="pg-manager-add-container" id="header-accordion">
+        <div class="pg-manager-add-header">
+          <div class="pg-manager-add-action">
+            <button class="pg-manager-btn"></button>
+          </div>
+        </div>
+        <div class="pg-manager-add-form">
+          <div class="pg-manager-form">
+            <div class="pg-manager-controls-wrapper">
+              <div class="pg-controls">
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" {{#ifEquals services.length 0}}disabled{{/ifEquals}} />
+              </div>
+              <div class="pg-controls">
+                <label for="time">Hora:</label>
+                <input type="time" id="time" {{#ifEquals services.length 0}}disabled{{/ifEquals}} />
+              </div>
+            </div>
+            <div class="pg-manager-services">
+              <label for="service">Servicio:</label>
+              <select id="service">
+                {{#each services}}
+                  <option value="{{this.id}}" data-service-price="{{this.servicePrice}}" {{#if @first}}selected{{/if}}>{{this.serviceType}}</option>
+                {{else}}
+                  <option value="" data-option-action="new-service">Agregar un servicio nuevo</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="pg-manager-price">
+              <div class="pg-manager-option label show" id="label">Precio:{{#ifEquals services.length 0}}<span class="format-price">$ -- MXN</span>{{else}}<span class="format-price">$<span id="display-price">{{services.[0].servicePrice}}</span> MXN</span>{{/ifEquals}}</div>
+              <div class="pg-manager-option" id="edit-label">
+                <label for="price" class="inline">Precio: </label>
+                <span class="format-price">$<input type="number" id="price">&nbsp;&nbsp;MXN</span>
+              </div>
+              {{!-- <input type="number" id="price"> --}}
+            </div>
+            <button
+              class="pg-primary-btn manager-action"
+              id="save"
+              disabled
+            >Guardar cita</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pg-manager-content">
+        <h1>Todas tus citas</h1>
+        <div id="accordion">
+          <h3>Citas pasadas</h3>
+          <div>
+            {{#each data}}
+                {{#ifEquals this.status 4}}
+                  {{> doctorAppointmentCard}}
+                {{/ifEquals}}
+            {{else}}
+              <h2>Sin citas</h2>
+            {{/each}}
+          </div>
+          <h3>Nuevas citas</h3>
+          <div>
+            {{#each data}}
+              {{#unlessEquals this.status 4}}
+                {{> doctorAppointmentCard}}
+              {{/unlessEquals}}
+            {{else}}
+              <h2>Sin citas</h2>
+            {{/each}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+{{#if showSuccessfullyMessage}}
+  <div class="field-message successfull">
+    {{message}}
+  </div>
+{{/if}}

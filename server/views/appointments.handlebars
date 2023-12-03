@@ -1,0 +1,44 @@
+<div class="pg-main">
+  <div class="pg-main-content">
+    <div class="pg-wrapper">
+      <h1 class="pg-schedule-title">Citas agendadas</h1>
+      <div class="pg-schedule-appot-list">
+        {{#each appointments}}
+          <div class="pg-schedule-appot-chip">
+            <h2 class="pg-schedule-date">{{this.date}}</h2>
+            <div class="pg-schedule-appots">
+              {{#each this.data}}
+                <div
+                  class="pg-schedule-details"
+                  data-appointment-id="{{this.id}}"
+                >
+                  <div class="pg-schedule-details-wrapper">
+                    <div class="pg-schedule-time">{{this.time}}</div>
+                    <div class="pg-schedule-content">
+                      <div class="pg-schedule-docname">Dr. {{this.doctor}}</div>
+                      <div class="pg-schedule-service">{{this.service}}
+                        • ${{this.price}}
+                        MXN</div>
+                      <div
+                        style="font-size: 13px;color: #444;margin-top: 5px;"
+                      >{{#if this.expired}}Caducada{{/if}}</div>
+                    </div>
+
+                  </div>
+                  <div class="pg-schedule-btn-wrapper">
+                    <button
+                      class="pg-primary-btn pg-schedule-btn-cancel"
+                      data-action="schedule-cancel"
+                    >Cancelar cita</button>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{else}}
+          <h1>Sin citas</h1>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

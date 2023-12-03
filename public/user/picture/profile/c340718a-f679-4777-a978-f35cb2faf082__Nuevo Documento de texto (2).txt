@@ -1,0 +1,86 @@
+The very idea of relegating part of the control of programming to the computer itself is actually born with the digital general-purpose computer. It is
+an aspect of what is commonly called the stored-program concept. Since the
+computer calculates much faster than any human being, the program should
+control the calculation while calculating. A logical next step would be that
+a program would control other programs. But in the early years, this control
+got no further than rather simple preparatory routines or bootstrapping routines. From the mid-1950s onwards, as the machines, the programming and
+the users evolved, this changed.
+New memory technologies became viable, both working and storage memories. In the early 1950s, cheap magnetic drums were a good option to expand
+the capacity of working memory that was directly addressable by the computing unit. With time, the more expensive but faster ferrite core magnetic
+memories developed at M.I.T. would overtake them. As for the external storage media, the introduction of magnetic tape instead of punched cards or
+paper tape was essential for the development of operating systems.
+
+
+the fastest punched-card readers of the 1950s could read upto 250 cards per
+minute, the tape systems trumped this by reading upto 15000 characters per
+second. This equals approximately 11250 cards per minute, which is 45 times
+faster than the card reader [32, p. 291]. It allowed for larger programs to
+be read into memory, and magnetic tape (sometimes also external magnetic
+drums) provided a way for easier and faster access to a library of routines.
+Of course, this acces was not random-access. Due to the physical qualities of
+the memory media, this access was either serial/sequential (magnetic tape),
+or cyclic (magnetic drum).
+Another technological evolution was the introduction of buffer memory for
+the communication between input and output devices and the central processor, typical of such computers as the IBM 701, IBM 704 or the ERA 1103.
+Before that time, a number of strategies had been used to use the computing unit and its input and output peripherals synchronously, among them
+‘spooling’ (putting information on tape rather than cards for speeding up
+I/O communications), ‘cycle-stealing’ (beginning an operation when the last
+one is not yet finished), read-write interlocks and, for large systems, ‘moonlighting’, using a smaller or slower computer as the I/O buffer to a larger
+or faster computer (a typical installation would involve an IBM 1401 and an
+IBM 7090). “With the advent of this phase [I/O buffer memory], input-output
+was taken out of the domain of mechanical speeds and placed in the domain
+of electronic speeds.” [9] Later still, because of the increasing demands from
+multiprogram design, special I/O channels with their own selector and multiplexing switches would be developed. Once low-cost, semiconductor-based
+processors became available, I/O channels would acquire their own processors instead of switches. One of the first examples of a processor-powered
+I/O channel was the Exchange system developed for IBM’s Stretch computer
+(1957).
+The expansion of rapid storage for programmed routines goes hand in hand
+with the development of software. The latter half of the 1950s is traditionally
+seen as the years software development took off [20, pp. 79-108]. This is
+witnessed by the foundation of computer user groups such as SHARE for IBM
+users or USE for scientific UNIVAC users (both in 1955). These organisations
+regularly organized meetings to share programs and to exchange information
+on programming practices [4]. The same period also sees the birth of the first
+software companies such as System Development Corporation (SDC, 1957)
+that grew out of RAND’s involvement with the SAGE project, or Computer
+Sciences Corporation (CSC, 1959) etc. [18, pp. 29-56] In this same context,
+the first big programming systems were developed, some of which can, in
+retrospect, be called operating systems. One of the influential first systems
+was the Comprehensive System of Service Routines (CSSR) developed at
+MIT’s Lincoln Lab for its Whirlwind computer. This system would later be
+the starting point for the SDC’s programming system for project SAGE.
+
+The years between 1962 and 1964 mark a turning point, closing off a first
+phase in the development of operating systems. The emergence of timesharing systems stand for this turning point, and at the horizon are the ‘big’
+operating system projects OS/360 and Multics. However, these are rather
+the most conspicious representatives of a broader and more general evolution. This evolution consists on the one hand of a gradual development of
+‘multiprogramming’, and on the other hand the introduction of new and faster memory devices. Together they made more complex and more flexible
+systems possible.
+Multiprogramming breaks with the sequential processing and is in essence
+the idea that more than one program is running at the same time. In practice, this synchronicity of programs is only virtual. In reality, one program is
+executed by the main processor and that others are waiting or have been interrupted in the meanwhile, although I/O processing can happen synchronously
+with a program being executed. The hardware interrupt made the first instances of multiprogramming possible and the introduction of I/O buffer
+memory made it proliferate in many directions. This development, pushed
+onwards by the parallel development of software multiprogramming systems,
+called in its turn for some hardware innovations. It made scheduling of programs a necessity, as well as memory protection and a programmable clock.
+In a way, the idea of time-sharing a computer, viz. many users executing
+programs and using resources at the same time6
+, can be considered as an
+extreme form of multiprogramming.
+Although multiprogramming profoundly changed the structure of computer systems, the transition from sequential to random storage media is
+easily the biggest game changer for implementing operating systems in the
+1960s. IBM’s 350 disk for the RAMAC (1956) was the first such randomaccess memory device, though it were rather the IBM 1405 and the IBM
+1301 disk (1961-1962) developed to be used on the IBM 1410 and the IBM
+7000-line of computers that revolutionized operating system design. Compared to the contemporary Hypertape-systems, also developd by IBM and
+operating at 170,000 characters per second, the 1301 disk drive is not only
+a factor faster, reading 112,000 characters per operation (with about 5 to 7
+operations per second), but most of all, it has the same access time (about
+0.150 per operation) for every section of data. The disk drives made it possible to leave the sequence-based logics of tape drives and drum memories and
+speed up the transfers between working memory and storage memory. This
+empowered software systems by reducing backlog and waiting times while
+enabling swapping between working and storage memory.
+But there is more. By 1962-1964 it seemed that about every computer manufacturer had caught on to the idea of an operating system and had developed
+one.7 Before 1960 most development happened by the users of computer systems or had been done in research contexts (mostly funded by the military).
+Now the manufacturers started investing in programming teams that should
+develop the proper programmings tools to go with their machines. These included routine libraries, (macro)assemblers, compilers, loaders, programming
+languages, debuggings aids, but also master routines and operating systems.

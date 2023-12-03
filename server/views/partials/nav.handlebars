@@ -1,0 +1,69 @@
+<header class="pg-main-header">
+  <nav class="pg-main-nav">
+    <div class="pg-main-nav-section">
+      <a href="/" class="pg-main-nav-logo-link">
+        <img
+          class="pg-main-nav-logo"
+          src="/public/images/logo3.png"
+          alt="Asclepo logo"
+        />
+        <span class="pg-main-nav-logo-name">Asclepo</span>
+      </a>
+    </div>
+    <div class="pg-main-nav-section">
+      {{#ifEquals  (global "userType") 'admin'}}
+        <p>Administrador</p>
+      {{else}}
+        <ul class="pg-main-nav-items">
+          <li class="pg-main-nav-item">
+            <a href="/" class="pg-main-nav-link {{#ifEquals activePage 'home'}}active{{/ifEquals}}">Inicio</a>
+          </li>
+          <li class="pg-main-nav-item">
+            <a href="/about" class="pg-main-nav-link {{#ifEquals activePage 'about'}}active{{/ifEquals}}">Nosotros</a>
+          </li>
+            {{!-- {{#unless (global "isLogged")}}
+              <li class="pg-main-nav-item">
+                <a href="/contact" class="pg-main-nav-link {{#ifEquals activePage 'contact'}}active{{/ifEquals}}">Contacto</a>
+              </li>
+            {{/unless}} --}}
+          {{#ifEquals (global "userType") "doctor"}}
+            <li class="pg-main-nav-item">
+              <a href="/manager" class="pg-main-nav-link {{#ifEquals activePage 'manager'}}active{{/ifEquals}}">Administrar citas</a>
+            </li>
+            <li class="pg-main-nav-item">
+              <a href="/manager/services" class="pg-main-nav-link {{#ifEquals activePage 'services'}}active{{/ifEquals}}">Servicios</a>
+            </li>
+          {{else}}
+            <li class="pg-main-nav-item">
+              <a href="/calendar" class="pg-main-nav-link {{#ifEquals activePage 'calendar'}}active{{/ifEquals}}">Agendar cita</a>
+            </li>
+          {{/ifEquals}}
+        </ul>
+      {{/ifEquals}}
+    </div>
+    <div class="pg-main-nav-section">
+      {{#if (global "isLogged")}}
+        {{#ifEquals (global "userType") "user"}}
+          <button class="pg-main-user-count" id="user-count">
+            <div class="pg-main-user-icon">
+              <img src="{{global "userProfilePhotoPath"}}" alt="Profile">
+            </div>
+            <div class="pg-main-user-options" id="user-options">
+              <ul class='pg-main-user-options-list'>
+                <li class="pg-main-option"><a href="/profile">Mi perfil</a></li>
+                <li class="pg-main-option"><a href="/appointments">Ver citas</a></li>
+                <li class="pg-main-option-separator"></li>
+                <li class="pg-main-option"><a href="/logout">Cerrar sesión</a></li>
+              </ul>
+            </div>
+          </button>
+        {{else}}
+          <a href="/logout" class="pg-link">Cerrar sesión</a>
+        {{/ifEquals}}
+      {{else}}
+        <a href="/signup" class="pg-main-nav-link">Registarse</a>
+        <button class="pg-primary-btn"><a href="/login">Iniciar sesión</a></button>
+      {{/if}}
+    </div>
+  </nav>
+</header>

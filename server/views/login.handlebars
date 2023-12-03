@@ -1,0 +1,55 @@
+<main class="pg-main">
+  <div class="pg-main-content">
+    <div class="pg-main-contact-container">
+      <div class="login-form">
+        <div class="container-login">
+          <div class="row justify-content-center mt-5 login-container">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="login-logo-wrapper">
+                    <img src="/public/images/logo3.png" alt="Asclepo" />
+                  </div>
+                  <h3 class="text-center login-title">Inicia sesión</h3>
+                  <form method="post" action="/login">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control border-top-radius no-message-input"
+                        id="inputEmail"
+                        aria-describedby="emailHelp"
+                        placeholder="Ingresa tu correo electrónico"
+                        name="email"
+                        pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        title="Formato de correo electrónico: example@domain.com"
+                        autofocus
+                        required
+                      />
+                      <input
+                        type="password"
+                        class="form-control border-bottom-radius"
+                        id="inputPassword"
+                        placeholder="Ingresa tu contraseña"
+                        name="password"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-login margin-top"
+                    >Iniciar sesión</button>
+                  </form>
+                  <div class="text-center">
+                    <p>¿No tienes cuenta aún?
+                      <a href="/signup" class="pg-link">Regístrate</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>

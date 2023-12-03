@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+  {{!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+  <link rel="stylesheet" href="/public/styles/fonts.css" />
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <link rel="stylesheet" href="/public/styles/modal-styles.css">
+  <link rel="stylesheet" href="/public/styles/appot-styles.css">
+  <link rel="stylesheet" href="/public/styles/profile-styles.css">
+  <link rel="stylesheet" href="/public/styles/manager-styless.css">
+  <link rel="stylesheet" href="/public/styles/admin-styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+</head>
+<body>
+  {{> nav }}
+  {{{ body }}}
+  {{> footer }}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+  {{#if (global "isLogged")}}
+    <script src="/public/js/index.js"></script>
+  {{/if}}
+  {{#ifEquals activePage 'manager'}}
+    <script src="/public/js/manager.js"></script>
+  {{/ifEquals}}
+  {{#ifEquals activePage 'services'}}
+    <script src="/public/js/services.js"></script>
+  {{/ifEquals}}
+  {{#ifEquals activePage 'calendar'}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="/public/js/calendar.js"></script>
+    <script>
+      $('.modal-display-scroller').scroll(function() { const scrollTop =
+      $(this).scrollTop(); if(scrollTop > 0) {
+      $('.modal-display-day-info').addClass('show-border') } else {
+      $('.modal-display-day-info').removeClass('show-border') } });
+    </script>
+  {{/ifEquals}}
+  {{#ifEquals activePage 'home'}}
+    <script src="/public/js/animated.js"></script>
+  {{/ifEquals}}
+  {{#ifEquals activePage 'profile'}}
+    <script src="/public/js/load-photo.js"></script>
+  {{/ifEquals}}
+  <script>
+    $(document).ready(() => {
+      $('input[type="email"]:not(.no-message-input)').on("blur", function () {
+        // Obtener el valor del campo de entrada
+        var email = $(this).val();
+
+        // Expresión regular para validar el formato de correo electrónico
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // Verificar si el valor coincide con el formato de correo electrónico
+        if (emailRegex.test(email)) {
+          // El formato es correcto
+          $('#email-label-error').remove()
+        } else {
+          // El formato es incorrecto
+          if($('#email-label-error').length > 0) return;
+          $(this).after(`<div class="label-error show" style="width: ${$(this).width()}px;" id="email-label-error">Formato de correo electrónico inválido.</div>`)
+        }
+      });
+
+      $('input[type="email"]:not(.no-message-input)').on("input", function () {
+        $('#email-label-error').remove()
+      });
+
+      $('input[type="tel"]').on('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        if (this.value.length > 10) {
+          this.value = this.value.slice(0, 10);
+        }
+      });
+    })
+  </script>
+</body>
+</html>

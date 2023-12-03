@@ -1,0 +1,105 @@
+<main class="pg-main">
+  <div class="pg-main-content">
+    <div class="pg-main-profile-wrapper">
+      <div class="pg-main-profile-section-left">
+        <div class="pg-main-profile-photo-wrapper">
+          <div class="pg-main-profile-photo">
+            <img
+              src="{{global 'userProfilePhotoPath'}}"
+              alt="Profile"
+              id="main-photo"
+            />
+          </div>
+          <div class="pg-main-profile-load-photo" id="load-photo">✚</div>
+        </div>
+        <div class="pg-main-profile-username">{{data.username}}</div>
+        <div class="pg-main-profile-info">Edad:
+          <span>{{data.age}} años</span></div>
+        <div class="pg-main-profile-info">Genero:
+          <span>{{data.gender}}</span></div>
+        <div class="pg-main-profile-info">CURP:
+          <span>{{data.curp}}</span></div>
+      </div>
+      <div class="pg-main-profile-section-right">
+        <div class="pg-main-profile-data-wrapper">
+          <h2 class="pg-main-profile-data-title">Tu informacion: </h2>
+
+          {{#if (global "editEnabled")}}
+            <form action="/updateData" method="post">
+              <div class="pg-main-profile-data-field">
+                <span class="pg-main-profile-data-label">Correo:</span>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control profile-field"
+                  aria-describedby="emailHelp"
+                  value="{{data.email}}"
+                  pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  title="Formato de correo electrónico: example@domain.com"
+                  autofocus
+                  required
+                />
+              </div>
+              <div class="pg-main-profile-data-field">
+                <span class="pg-main-profile-data-label">Telefono:</span>
+                <input
+                  type="tel"
+                  name="phone"
+                  class="form-control profile-field"
+                  value="{{data.phone}}"
+                  required
+                />
+              </div>
+              <div class="pg-main-profile-data-controls">
+                <button id="cancel-edit">Cancelar</button>
+                <button
+                  class="pg-primary-btn"
+                  id="confirm-update-data"
+                  type="submit"
+                >Guardar cambios</button>
+              </div>
+            </form>
+          {{else}}
+            <div class="pg-main-profile-data-field">
+              <span class="pg-main-profile-data-label">Correo:</span>
+              <div
+                class="pg-main-profile-data-value profile-field"
+              >{{data.email}}</div>
+            </div>
+            <div class="pg-main-profile-data-field">
+              <span class="pg-main-profile-data-label">Contraseña:</span>
+              <div class="pg-main-profile-data-value profile-field">******</div>
+            </div>
+            <div class="pg-main-profile-data-field">
+              <span class="pg-main-profile-data-label">Telefono:</span>
+              <div
+                class="pg-main-profile-data-value profile-field"
+              >{{data.phone}}</div>
+            </div>
+            <div class="pg-main-profile-data-controls">
+              <button class="pg-primary-btn" id="update-data">Cambiar datos</button>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{#if showMessageFieldFocus}}
+  <div class="field-message warning">
+    {{#ifEquals fieldFocus "email"}}
+      El correo '{{data.email}}' ya se encuentra en uso.
+    {{else}}
+      {{#ifEquals fieldFocus "phone"}}
+        El telefono '{{data.phone}}' ya se encuentra en uso.
+      {{/ifEquals}}
+    {{/ifEquals}}
+  </div>
+{{/if}}
+
+{{#if dataUpdateSuccessfullyMessage}}
+  <div class="field-message successfull">
+    Datos actualizados correctamente.
+  </div>
+{{/if}}

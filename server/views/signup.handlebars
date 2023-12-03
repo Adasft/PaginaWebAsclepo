@@ -1,0 +1,142 @@
+<main class="pg-main">
+  <div class="pg-main-content">
+    <div class="pg-main-contact-container center">
+      <div class="container-login">
+
+        <form method="post" action="/signup" class="signup-form">
+          <div class="login-logo-wrapper">
+            <img src="/public/images/logo3.png" alt="Asclepo" />
+          </div>
+          <h3 class="text-center login-title">Registro</h3>
+          <div class="pg-manager-controls-wrapper">
+            <div class="form-group form-label siblings">
+              <label for="nombre">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="name"
+                required
+              />
+            </div>
+            <div class="form-group form-label siblings">
+              <label for="apellido">Apellido:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellido"
+                name="lastname"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group form-label">
+            <label for="correo">Correo:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="correo"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group form-label">
+            <label for="contrasena">Contraseña:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="contrasena"
+              name="password"
+              required
+            />
+          </div>
+          <div class="form-group form-label">
+            <label for="curp">CURP:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="curp"
+              pattern="[A-Z]{4}[0-9]{6}[H,M][A-Z]{5}[A-Z0-9]{2}"
+              title="El formato de la CURP debe ser AAAA######HMxAAAAAA##"
+              name="curp"
+              required
+            />
+          </div>
+          <div class="form-group form-label">
+            <label for="telefono">Número de Teléfono:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="telefono"
+              name="phone"
+              required
+            />
+          </div>
+          <div class="form-group form-label">
+            <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="fecha-nacimiento"
+              name="birthdate"
+              required
+            />
+          </div>
+          <div class="form-group form-label">
+            <label for="genero">Género:</label>
+            <select class="form-control" id="genero" name="gender" required>
+              <option value="">Seleccionar</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          {{! <div class="form-check" style="margin-bottom: 10px;">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="terminos-condiciones"
+                  required
+                />
+                <label
+                  class="form-check-label"
+                  for="terminos-condiciones"
+                >Acepto los términos y condiciones</label>
+              </div> }}
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Acepto los términos
+              y condiciones</label>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary btn-login"
+          >Registrar</button>
+          <div class="text-center">
+            <p>¿Ya tienes una cuenta?
+              <a href="/login" class="pg-link">Inicia sesión</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+{{#if showMessageFieldFocus}}
+  <div class="field-message warning">
+    {{#ifEquals fieldFocus "email"}}
+      El correo '{{data.email}}' ya se encuentra en uso.
+    {{else}}
+      {{#ifEquals fieldFocus "phone"}}
+        El telefono '{{data.phone}}' ya se encuentra en uso.
+      {{else}}
+        La curp '{{data.curp}}' ya se encuentra en uso.
+      {{/ifEquals}}
+    {{/ifEquals}}
+  </div>
+{{/if}}
+
+<script>
+  setTimeout(() => { $(".field-message")?.remove(); }, 5000);
+</script>

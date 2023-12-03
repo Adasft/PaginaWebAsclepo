@@ -1,0 +1,537 @@
+.pg-main-wrapper {
+  min-height: calc(100vh - 60px);
+}
+
+.pg-manager-add-container {
+  width: 100%;
+}
+
+.pg-manager-add-header {
+  padding: 20px 0;
+}
+
+.pg-manager-add-action {
+  display: flex;
+  align-items: center;
+}
+
+.pg-manager-btn {
+  color: var(--blue-color);
+  font-size: 15px;
+}
+
+.pg-manager-btn::before {
+  content: "✛";
+  font-size: 15px;
+  color: var(--blue-color);
+  margin-right: 10px;
+  display: inline-block;
+  transition: all 0.4s;
+}
+
+.pg-manager-btn::after {
+  content: "Nueva cita";
+  font-size: 15px;
+  color: var(--blue-color);
+}
+
+.ui-state-active .pg-manager-btn::before {
+  content: "✛";
+  transform: rotate(45deg) scale(1.3);
+}
+
+.ui-state-active .pg-manager-btn::after {
+  content: "Cancelar";
+}
+
+.pg-manager-content {
+  box-shadow: 0 -1px 0 var(--border-color);
+  padding-top: 20px;
+}
+
+.pg-manager-content h1 {
+  font-family: "SF Pro Display";
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#accordion {
+  width: 100%;
+  /* height: 600px; */
+  /* overflow-y: auto; */
+}
+
+#accordion .ui-accordion-header {
+  width: 100%;
+  padding: 20px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  background: #ebebeb;
+  border: 1px solid var(--border-color);
+  margin-top: 10px;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+}
+
+#accordion .ui-accordion-header::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  margin: auto;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transform: rotate(45deg);
+  transition: all 0.2s;
+}
+
+#accordion .ui-state-active {
+  background: var(--blue-color);
+  color: #fff;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* border-top: 1px solid var(--border-color); */
+}
+
+#accordion .ui-accordion-header.ui-state-active::after {
+  border-color: #fff;
+  transform: rotate(-135deg);
+}
+
+#accordion .ui-accordion-content {
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.pg-manager-add-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pg-manager-form {
+  width: 500px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 30px;
+  box-shadow: 0 10px 20px 2px rgba(0 0 0 / 10%);
+}
+
+.pg-manager-controls-wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.pg-controls {
+  width: 50%;
+}
+
+.pg-controls:nth-child(1) {
+  margin-right: 20px;
+}
+
+.pg-manager-form label,
+.ser label {
+  display: block;
+}
+
+.pg-manager-form label.inline,
+.ser label.inline {
+  display: inline-block;
+}
+
+.ser {
+  margin-bottom: 10px;
+}
+
+.pg-manager-form label,
+.label,
+.ser label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-left: 2px;
+}
+
+.pg-manager-option:not(.show) {
+  display: none;
+}
+
+#price {
+  margin-left: 10px;
+  width: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.pg-manager-form input[type="date"],
+.pg-manager-form input[type="time"],
+.pg-manager-form select,
+.ser input[type="text"],
+.ser input[type="date"],
+.ser input[type="time"],
+.ser select {
+  width: 100%;
+  padding: 10px;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.ser input[type="date"]:disabled,
+.pg-manager-form input[type="date"]:disabled,
+.pg-manager-form input[type="time"]:disabled {
+  opacity: 0.5;
+}
+
+input.inline {
+  display: inline-block !important;
+  width: calc(100% - 90px) !important;
+}
+
+.pg-manager-form select {
+  margin-bottom: 20px;
+}
+
+.manager-action {
+  width: 100%;
+  margin: 0;
+  height: 40px;
+}
+
+.pg-manager-card {
+  --inner-height: 50px;
+  /* width: 80%; */
+  display: flex;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: #fff;
+  cursor: default;
+  transition: all 0.3s;
+  /* justify-content: space-between; */
+}
+
+.pg-manager-card:hover {
+  box-shadow: 0 12px 20px 1px rgba(0 0 0 / 10%);
+}
+
+.pg-manager-card-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: min-content;
+  height: var(--inner-height);
+}
+
+.pg-manager-card-picture {
+  width: var(--inner-height);
+  height: var(--inner-height);
+  margin-right: 20px;
+  border-radius: 50px;
+}
+
+.pg-manager-card-patient-name {
+  width: 290px;
+}
+
+.pg-manager-card-hour {
+  width: 100px;
+  text-align: center;
+}
+
+.pg-manager-card-patient-phone {
+  width: 150px;
+  text-align: center;
+}
+
+.pg-manager-card-patient-name,
+.pg-manager-card-hour,
+.pg-manager-card-patient-phone {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "SF Pro Display";
+  color: #333;
+}
+
+.pg-manager-card-patient-age {
+  width: 100%;
+}
+
+.pg-manager-card-patient-age,
+.pg-manager-card-date {
+  font-size: 13px;
+  font-family: "SF Pro Display";
+  color: #555;
+  text-transform: capitalize;
+}
+
+.pg-manager-card-status {
+  font-size: 16px;
+  margin: 0 20px;
+  /* font-weight: 700; */
+  text-align: center;
+  font-family: "SF Pro Display";
+}
+
+.pg-manager-card-status.available {
+  color: rgb(53 176 95);
+}
+
+.pg-manager-card-status.scheduled {
+  color: rgb(225 225 97);
+}
+
+.pg-manager-card-status.expired {
+  color: #969696;
+}
+
+.pg-manager-card-action {
+  --bg: rgba(0 0 0 / 30%);
+  --size: 4px;
+  width: 20px;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pg-manager-card-action::before {
+  content: "";
+  display: block;
+  border-radius: var(--size);
+  width: var(--size);
+  height: var(--size);
+  background: var(--bg);
+  box-shadow: 0 calc((var(--size) - var(--size) * 2) - 2px) 0 var(--bg),
+    0 calc(var(--size) + 3px) 0 var(--bg);
+}
+
+.pg-manager-card-options {
+  position: absolute;
+  right: 20px;
+  z-index: 20;
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px var(--border-color);
+  background: #fff;
+  transform: scale(0);
+  visibility: hidden;
+  transform-origin: top right;
+  transition: all 0.2s;
+}
+
+.pg-manager-card-options ul {
+  padding: 10px 0;
+}
+
+.pg-manager-card-options li {
+  height: 45px;
+  width: 250px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 20px;
+  line-height: 45px;
+}
+
+.pg-manager-card-options li:hover {
+  background: rgba(0 0 0 / 5%);
+}
+
+.pg-manager-card-options.show {
+  transform: scale(1);
+  visibility: visible;
+}
+
+.pg-manager-card-options.hidden {
+  transform: scale(0);
+  visibility: hidden;
+}
+
+.pg-manager-card-service-price {
+  width: 100px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.pg-manager-card-service {
+  font-size: 13px;
+  text-align: center;
+  width: 110px;
+  /* margin: 0 10px; */
+}
+
+.pg-manager-card-options-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 70px;
+  height: 100%;
+}
+
+.pg-manager-price {
+  margin-bottom: 20px;
+}
+
+.format-price {
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+}
+
+.section1 {
+  margin-right: 50px;
+  margin-top: 20px;
+  width: 30%;
+}
+
+.section2 {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.section2 .pg-main-center {
+  margin: 70px 0 !important;
+  height: fit-content !important;
+}
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#save-service:disabled {
+  opacity: 0.5;
+}
+
+.services-list {
+  height: 100%;
+  padding: 5px 5px 0 5px;
+  overflow-y: auto;
+}
+
+.services-list li {
+  padding: 20px;
+  background: #fff;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.services-list li:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0 0 0 / 10%);
+}
+
+.services-list li div {
+  margin-top: 0 !important;
+}
+
+li.li-focused {
+  animation: focused 5000ms;
+}
+
+@keyframes focused {
+  0% {
+    outline: 3px solid rgb(10 189 99 / 100%);
+  }
+  100% {
+    outline: 3px solid rgb(10 189 99 / 0%);
+  }
+}
+
+.pg-main-ser-wrapper {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.pg-controls-ser {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pg-ser-control {
+  height: 18px;
+  width: 18px;
+  margin: 0 10px;
+  opacity: 0.5;
+  display: none;
+  transition: all 0.3s;
+  /* background: #000; */
+}
+
+.services-list li:hover .pg-ser-control {
+  display: block;
+}
+
+.pg-ser-control:hover {
+  opacity: 0.9;
+}
+
+.pg-ser-control.edit {
+  background: url(/public/images/icons/edit1.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.pg-ser-control.delete {
+  background: url(/public/images/icons/delete1.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.ser-controls-form {
+  display: flex;
+}
+
+.btn-second {
+  width: 0;
+  overflow: hidden;
+  height: 45px;
+  margin-top: 10px;
+  padding: 0;
+  border-radius: 50px;
+  margin-right: 0;
+  background: rgba(0 0 0 / 10%);
+
+  font-size: 15px;
+  color: #111;
+  transition: all 0.1s;
+}
+
+.btn-second:hover {
+  background: rgba(0 0 0 / 15%);
+}
+
+.btn-second.show {
+  width: 123px;
+  padding: 0 20px;
+  margin-right: 10px;
+}

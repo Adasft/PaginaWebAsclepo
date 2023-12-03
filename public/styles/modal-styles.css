@@ -1,0 +1,225 @@
+#calendar-container {
+  margin: 50px 0;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0 0 0 / 60%);
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  display: none;
+  backdrop-filter: blur(15px) saturate(120%);
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-internal-container {
+  width: 500px;
+  height: 600px;
+}
+
+.modal-internal-container,
+.modal-confirm-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.modal-confirm-container {
+  width: 400px;
+  height: fit-content;
+  padding: 0 20px;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.modal-confirm-title {
+  margin: 20px 0;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "SF Pro Display";
+}
+
+.modal-year {
+  height: 50px;
+  line-height: 50px;
+  font-size: 45px;
+  margin-bottom: 15px;
+  color: rgba(255 255 255 / 70%);
+}
+
+.modal-display-events {
+  width: 100%;
+  height: calc(100% - 50px);
+  background: #fff;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-display-day-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(100% - 10px);
+  z-index: 10;
+  /* height: 100px; */
+  background: rgba(255 255 255 / 60%);
+  backdrop-filter: blur(15px) saturate(120%);
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+
+.modal-display-day-info.show-border {
+  box-shadow: 0 1px 0 var(--border-color);
+}
+
+.modal-display-day-name,
+.modal-display-day-number {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "SF Pro Display";
+  color: #333;
+}
+
+.modal-display-scroller {
+  width: 100%;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  padding-top: 120px;
+}
+
+/* Estilos para la barra de scroll */
+.modal-display-scroller::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Estilos para el thumb del scroll */
+.modal-display-scroller::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+/* Estilos para el thumb del scroll cuando está en hover */
+.modal-display-scroller::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.modal-display-controls {
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 -1px 0 var(--border-color);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.modal-display-events-view {
+  padding: 20px 20px 0 20px;
+}
+
+.modal-display-chip {
+  width: 100%;
+  min-height: 110px;
+  box-shadow: 0 0 0 1px rgba(0 0 0 / 40%);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.modal-display-chip.selected::before {
+  content: "\2714";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background: var(--blue-color);
+  right: -10px;
+  top: -10px;
+  text-align: center;
+  color: #fff;
+}
+
+.modal-display-overflow {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 20px;
+  display: flex;
+}
+
+.modal-display-event-status {
+  width: 20px;
+  min-height: 100%;
+}
+
+.modal-display-chip.busy .modal-display-event-status {
+  background: rgb(255 111 100);
+}
+
+.modal-display-chip.available .modal-display-event-status {
+  background: rgb(64 196 108);
+}
+
+.modal-display-chip.scheduled .modal-display-event-status {
+  background: rgb(237 239 122);
+}
+
+.modal-display-chip.expired .modal-display-event-status {
+  background: rgb(148, 148, 148);
+}
+
+.modal-display-event-details {
+  padding: 10px 20px;
+  width: calc(100% - 20px);
+}
+
+.modal-display-event-time {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "SF Pro Display";
+}
+
+.modal-display-event-type-service {
+  font-size: 18px;
+  font-family: "SF Pro Display";
+}
+
+.modal-display-doctor {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.pg-primary-btn:disabled {
+  opacity: 0.5;
+}
+
+.mode-display-info {
+  position: absolute;
+  width: 250px;
+  top: 60px;
+  right: -250px;
+  padding-left: 20px;
+}
+
+.mode-display-info p {
+  font-size: 18px;
+  color: #fff;
+}
+
+.modal-confirm-title p {
+  font-size: 14px !important;
+  font-weight: normal !important;
+  margin-top: 10px;
+  color: #555;
+}

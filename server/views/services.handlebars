@@ -1,0 +1,72 @@
+<main class="pg-main">
+  <div class="pg-main-content">
+    <div class="pg-main-ser-wrapper">
+      <div class="section1">
+        <div class="title">Tus servicios</div>
+        <ul class="services-list">
+          {{#each services}}
+            <li data-parent-ref-id="{{this.id}}">
+              <div class="pg-schedule-service">{{this.serviceType}}
+                • $<span data-ref-id="{{this.id}}">{{this.servicePrice}}</span>
+                MXN</div>
+              <div class="pg-controls-ser">
+                <button
+                  class="pg-ser-control edit"
+                  title="Editar"
+                  data-ser-action="edit"
+                  data-service='{"type":"{{this.serviceType}}","price":"{{this.servicePrice}}","id":{{this.id}} }'
+                ></button>
+                <button
+                  class="pg-ser-control delete"
+                  title="Eliminar"
+                  data-ser-action="delete"
+                  data-service='{"id":{{this.id}} }'
+                ></button>
+              </div>
+            </li>
+          {{else}}
+            <h2>Sin servicios</h2>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="section2">
+        <div class="pg-main-center">
+          <form method="POST" action="/manager/api/new/service">
+            <div class="login-logo-wrapper">
+              <img src="/public/images/logo3.png" alt="Asclepo" />
+            </div>
+            <h3 class="text-center login-title">Agregar servicio</h3>
+            <div class="pg-controls1 ser">
+              <label for="service" class="inline">Servicio: </label>
+              <input type="text" id="service" class="inline" name="service" />
+            </div>
+            <div class="pg-controls1 ser">
+              <label for="price" class="inline">Precio: </label>
+              <span class="format-price">$<input
+                  type="number"
+                  id="price"
+                  name="price"
+                />&nbsp;&nbsp;MXN</span>
+            </div>
+            <div class="ser-controls-form">
+              <button class="btn-second" id="cancel">Cancelar</button>
+              <button
+                type="submit"
+                disabled
+                id="save-service"
+                class="btn btn-primary btn-login"
+              >Agregar servicio</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{#if showFieldMessage}}
+  <div class="field-message {{typeMessage}}">
+    {{message}}
+  </div>
+{{/if}}

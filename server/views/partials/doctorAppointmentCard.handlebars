@@ -1,0 +1,71 @@
+{{#if this.isNull}}{{else}}
+  <div class="pg-manager-card">
+    <div class="pg-manager-card-section">
+      <img
+        src="{{this.patientPhoto}}"
+        alt="Paciente"
+        class="pg-manager-card-picture"
+      />
+    </div>
+    <div class="pg-manager-card-section">
+      <div class="pg-manager-card-patient-name">{{this.patientName}}</div>
+      {{#unlessEquals this.patientName "Sin paciente"}}
+        <div class="pg-manager-card-patient-age">{{this.patientAge}}
+          años,
+          {{this.patientGender}}</div>
+      {{/unlessEquals}}
+    </div>
+    <div class="pg-manager-card-section">
+      <div class="pg-manager-card-hour">{{this.formatTime}}</div>
+      <div class="pg-manager-card-date">{{this.formatDate}}</div>
+    </div>
+    <div class="pg-manager-card-section">
+      <div class="pg-manager-card-service">{{this.serviceType}}</div>
+    </div>
+    <div class="pg-manager-card-section">
+      <div class="pg-manager-card-service-price">${{this.servicePrice}}
+        MXN</div>
+    </div>
+    <div class="pg-manager-card-section">
+      {{#unlessEquals this.patientName "Sin paciente"}}
+        <div class="pg-manager-card-patient-phone">{{this.patientPhone}}</div>
+      {{else}}
+        <div class="pg-manager-card-patient-phone">--- --- ----</div>
+      {{/unlessEquals}}
+    </div>
+    <div class="pg-manager-card-section">
+      {{#ifEquals this.status 1}}
+        <div class="pg-manager-card-status available">Disponible</div>
+      {{else}}
+        {{#ifEquals this.status 2}}
+          <div class="pg-manager-card-status scheduled">Agendada</div>
+        {{else}}
+          {{#ifEquals this.status 4}}
+            <div class="pg-manager-card-status expired">Caducada</div>
+          {{/ifEquals}}
+        {{/ifEquals}}
+      {{/ifEquals}}
+    </div>
+    <div class="pg-manager-card-section">
+      <div class="pg-manager-card-options-wrapper">
+        <button
+          class="pg-manager-card-action show-options-card"
+          data-appointment-id="{{this.uuid}}"
+          data-appointment='{"date":"{{this.inputFormatDate}}","time":"{{this.inputFormatTime}}","serviceId":"{{this.idService}}","price":"{{this.servicePrice}}"}'
+        ></button>
+        <div class="pg-manager-card-options">
+          <ul>
+            {{#unlessEquals this.status 4}}
+              <li
+                data-option-action='{"action": "EDIT","uuid":"{{this.uuid}}"}'
+              >Editar</li>
+            {{/unlessEquals}}
+            <li
+              data-option-action='{"action": "DELETE","uuid":"{{this.uuid}}"}'
+            >Eliminar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

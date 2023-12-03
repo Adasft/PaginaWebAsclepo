@@ -1,0 +1,72 @@
+<main class="pg-main">
+  <div class="pg-main-content">
+    <div id="calendar-container"></div>
+  </div>
+</main>
+
+<div class="modal">
+  <div class="modal-internal-container">
+    <h2 class="modal-year" id="modal-year">Agosto 2023</h2>
+    <div class="modal-display-events">
+      <div class="modal-display-day-info">
+        <div class="modal-display-day-name" id="modal-day-name">Lunes</div>
+        <div class="modal-display-day-number" id="modal-day-number">4</div>
+      </div>
+      <div class="modal-display-scroller">
+        <div class="modal-display-events-view" id="modal-events-view">
+        </div>
+      </div>
+      <div class="modal-display-controls">
+        <button id="close-modal">Cancelar</button>
+        <button
+          class="pg-primary-btn"
+          id="schedule-appointment"
+          disabled
+        >Agendar cita</button>
+      </div>
+    </div>
+    <div class="mode-display-info">
+      <style>
+        .yellow, .red, .green, .grey { color: #fff; margin-top: 10px; display:
+        flex; align-items: center; } .yellow .l { background: rgb(237 239 122);
+        } .green .l { background: rgb(64 196 108); } .red .l { background:
+        rgb(255 111 100); } .l { margin-right: 8px; } .l { display:
+        inline-block; width: 20px; height: 20px; border-radius: 50px; } .grey .l
+        { background: rgb(148, 148, 148); }
+      </style>
+      <p>Selecciona haciendo clic en cualquier cita.</p>
+      <div class="yellow">
+        <span class="l"></span>
+        Tus citas agendadas
+      </div>
+      <div class="green">
+        <span class="l"></span>
+        Citas disponibles
+      </div>
+      <div class="red">
+        <span class="l"></span>
+        Citas no disponibles
+      </div>
+      <div class="grey">
+        <span class="l"></span>
+        Citas caducadas
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- {{! <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> }}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"
+></script>
+<script src="/public/js/calendar.js"></script> --}}
+{{! <script>
+  $('.modal-display-scroller').scroll(function() { const scrollTop =
+  $(this).scrollTop(); if(scrollTop > 0) {
+  $('.modal-display-day-info').addClass('show-border') } else {
+  $('.modal-display-day-info').removeClass('show-border') } });
+
+</script> }}
